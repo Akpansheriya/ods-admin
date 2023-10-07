@@ -1,0 +1,121 @@
+.calendario {
+  background: #f6f8ff 0% 0% no-repeat padding-box;
+  width: 100%;
+  height: 100%;
+  padding: 25px 45px;
+  font-family: "Inter";
+  .main-title-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .calendario-detail-main-title {
+      font: normal normal bold 26px/31px Inter;
+      margin-bottom: 5px;
+      text-align: start;
+    }
+    .calendario-detail-sub-title {
+      font: normal normal normal 12px/15px Inter;
+      text-align: start;
+      margin-bottom: 0;
+    }
+  }
+  .maincontainer {
+    border-radius: 8px;
+    margin-top: 20px;
+    background: #fff;
+    padding: 25px;
+
+    .fc-timegrid-axis-cushion {
+      font: normal normal 11px/14px Inter;
+      font-weight: 600;
+      letter-spacing: -0.11px;
+      color: #8a98a5;
+    }
+    .fc-scrollgrid-sync-inner{
+        font: normal normal  12px/15px Inter;
+        font-weight: 600;
+letter-spacing: 0px;
+
+a{
+    color: #1D2328 !important;
+}
+    }
+    .fc-timegrid-slot-label-cushion {
+      font: normal normal 11px/14px Inter;
+      font-weight: 600;
+      letter-spacing: -0.11px;
+      color: #8a98a5;
+    }
+    a {
+      text-decoration: none !important;
+    }
+    .fc-toolbar-chunk {
+      .fc-button-group {
+        background: transparent !important;
+        .fc-button-active {
+          background: #e2e6e9 !important;
+          border-radius: 6px;
+          font: normal normal 13px/16px Inter;
+          font-weight: 600;
+          letter-spacing: 0px;
+          color: #1d2328;
+        }
+        .fc-button {
+          &:focus {
+            box-shadow: none !important;
+          }
+        }
+        .fc-prev-button {
+          background: #f1f6f4;
+          border-radius: 6px;
+          color: #000;
+          border: 0;
+          margin-right: 5px;
+        }
+        .fc-next-button {
+          background: #f1f6f4;
+          border-radius: 6px;
+          color: #000;
+          border: 0;
+        }
+        .fc-dayGridMonth-button {
+          background: #f1f6f4;
+          border-radius: 6px;
+          color: #000;
+          border: 0;
+          margin-left: 5px;
+        }
+        .fc-timeGridWeek-button {
+          background: #f1f6f4;
+          border-radius: 6px;
+          color: #000;
+          border: 0;
+          margin-left: 5px;
+        }
+        .fc-timeGridDay-button {
+          background: #f1f6f4;
+          border-radius: 6px;
+          color: #000;
+          border: 0;
+          margin-left: 5px;
+        }
+        .fc-listWeek-button {
+          background: #f1f6f4;
+          border-radius: 6px;
+          color: #000;
+          border: 0;
+          margin-left: 5px;
+        }
+      }
+      .fc-today-button {
+        background: #f1f6f4;
+        border-radius: 6px;
+        font: normal normal 13px/16px Inter;
+        font-weight: 600;
+        letter-spacing: 0px;
+        color: #707070;
+        border: 0;
+      }
+    }
+  }
+}
