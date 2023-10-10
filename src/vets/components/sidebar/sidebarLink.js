@@ -1,35 +1,35 @@
+
+
 export const links = [
   {
     title: "Resumen",
     path: "/dashboard/resumen",
-    icon: "bi bi-grid",
- 
+    icon:"../images/1.png"
   },
   {
     title: "Citas agendadas",
     path: "/dashboard/citas",
-    icon: "bi bi-card-list",
+    icon:"../images/2.png"
   },
   {
     title: "Calendario de Citas",
     path: "/dashboard/calendario",
-    icon: "bi bi-calendar-event",
+    icon:"../images/3.png"
+   
   },
   {
     title: "Mascotas",
     path: "/dashboard/mascotas",
-    icon: "bi bi-gift",
+    icon:"../images/4.png"
   },
   {
     title: "Propietarios",
     path: "/dashboard/propietarios",
-    icon: "bi bi-people-fill",
+    icon:"../images/5.png"
   },
-  
   {
     title: "Inventario Productos",
     path: "/dashboard/Inventario",
-    icon: "bi bi-bag-plus",
+    icon:"../images/6.png"
   },
-]
-
+];

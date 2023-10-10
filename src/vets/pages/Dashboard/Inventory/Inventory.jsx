@@ -1,13 +1,29 @@
 import React, { useState } from "react";
 import "./inventory.scss";
 
-import { ButtonGroup, Dropdown, Form } from "react-bootstrap";
+import { Button, ButtonGroup, Dropdown, Form } from "react-bootstrap";
 import { inventoryData } from "./inventoryData";
 import { Link } from "react-router-dom";
 import CitasPagination from "../../../components/pagination/citas-pagination/Citas-Pagination";
 import SingleInputDateRangePicker from "../citas/date-picker/DatePicker";
+import InventoryModal from "./modal/InventoryModal";
+import CategoryModal from "./modal/CategoryModal";
+import Alert from "../../../components/alert/Alert";
 
 const Inventory = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [modalShow, setModalShow] = useState(false);
+
+  const handleHide = () => {
+      setModalShow(false);
+  }
+  const [showCategory, setShowCategory] = useState(false);
+
+  const handleCloseCategory = () => setShowCategory(false);
+  const handleShowCategory = () => setShowCategory(true);
   const [dropdowns, setDropdown] = useState(
     new Array(inventoryData.length).fill(false)
   );
@@ -41,235 +57,283 @@ const Inventory = () => {
   const adjustedIndexOfFirstPost = Math.max(0, indexOfFirstPost);
 
   const currentPosts = inventoryData.slice(adjustedIndexOfFirstPost, indexOfLastPost);
+  
   return (
     <>
-      <section className="inventory-section">
-      <div className="main-title-box">
-          <p className="inventario-main-title">Inventario Productos</p>
-          <p className="inventario-sub-title">Inventario Productos</p>
+      <div className="inventory">
+        <div className="main-title-box">
+          <p className="inventory-main-title">Inventario Productos</p>
+          <p className="inventory-sub-title">Inventario Productos</p>
         </div>
-        <div className="inventory-second">
-          <div className="inventory-table-container">
-            <div className="inventory-filter-container-main">
-              <div className="filter-box">
-               
-                <div className="form-group has-search">
-                  <span className="fa fa-search form-control-feedback"></span>
-                  <input
-                    type="text"
-                    className="form-control mr-sm-2"
-                    placeholder="Buscar cita"
-                  />
+        <div className="inventory-table-container">
+          <div className="card card-flush">
+          <div className="card-header align-items-center py-5 ">
+              <div className="header-left">
+                <div className="card-title">
+                  <div className="d-flex align-items-center position-relative my-1">
+                    <span class="svg-icon svg-icon-1 position-absolute ms-4">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <rect
+                          opacity="0.5"
+                          x="17.0365"
+                          y="15.1223"
+                          width="8.15546"
+                          height="2"
+                          rx="1"
+                          transform="rotate(45 17.0365 15.1223)"
+                          fill="currentColor"
+                        />
+                        <path
+                          d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
+                          fill="currentColor"
+                        />{" "}
+                      </svg>
+                    </span>
+
+                    <input
+                      type="text"
+                      data-kt-ecommerce-product-filter="search"
+                      className="form-control form-control-solid w-250px ps-14"
+                      placeholder="Search Product"
+                    />
+                  </div>
                 </div>
-                <Dropdown
-                  as={ButtonGroup}
-                  show={isDropdownOpen}
-                  onClose={closeDropdown}
-                  onToggle={toggleDropdown}
-                  align={"end"}
-                  className="filter-dropdown"
-                >
-                  <Dropdown.Toggle
-                    className={`filter-btn ${
-                      isDropdownOpen === true ? "active" : ""
-                    }`}
-                  >
-                    <i className="bi bi-funnel"></i>
-                    <p>Filtros</p>{" "}
-                    <i
-                      className={`fa-solid fa-chevron-${
-                        isDropdownOpen ? "up" : "down"
-                      }`}
-                    ></i>
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu
-                    className={`menu menu-sub menu-sub-dropdown w-250px w-md-300px ${
-                      isDropdownOpen ? "show" : ""
-                    }`}
-                    data-kt-menu="true"
-                    id="kt_menu_62444587ce1ee"
-                  >
-                    <div className="px-7 py-5">
-                      <div className="fs-5 text-dark fw-bolder">
-                      Filtros
-                      </div>
-                    </div>
-                    {/* <div className="separator border-gray-200"></div> */}
-                    <Dropdown.Divider className=" border-gray-200" />
-                    <div>
-                      <div className="px-7 py-5">
-                        <div className="mb-5 ">
-                          <label className="form-label fw-bold">Categoría</label>
-                          <div>
-                            <select
-                              className="form-select form-select-solid"
-                              data-kt-select2="true"
-                              data-placeholder="Select option"
-                              data-dropdown-parent="#kt_menu_62444587ce1ee"
-                              data-allow-clear="true"
-                            >
-                              <option>Seleccionar</option>
-                              <option value="1">Bienestar</option>
-                             
-                             
-                            </select>
+                <div className="card-toolbar flex-row-fluid justify-content-start gap-5">
+                  <div className="w-100 mw-150px position-relative">
+                    <Dropdown
+                      as={ButtonGroup}
+                      show={isDropdownOpen}
+                      onClose={closeDropdown}
+                      onToggle={toggleDropdown}
+                      align={"end"}
+                      className="filter-dropdown"
+                    >
+                      <Dropdown.Toggle
+                        className={`filter-btn ${
+                          isDropdownOpen === true ? "active" : ""
+                        }`}
+                      >
+                        <i className="bi bi-funnel"></i>
+                        <p>Filtros</p>{" "}
+                        <i
+                          className={`fa-solid fa-chevron-${
+                            isDropdownOpen ? "up" : "down"
+                          }`}
+                        ></i>
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu
+                        className={`menu menu-sub menu-sub-dropdown w-250px w-md-300px ${
+                          isDropdownOpen ? "show" : ""
+                        }`}
+                        data-kt-menu="true"
+                        id="kt_menu_62444587ce1ee"
+                      >
+                        <div className="px-7 py-5">
+                          <div className="fs-5 text-dark fw-bolder">
+                            Filtros
                           </div>
                         </div>
-                        <div className="mb-5 ">
-                          <label className="form-label fw-bold">Estado</label>
-                          <div>
-                            <select
-                              className="form-select form-select-solid"
-                              data-kt-select2="true"
-                              data-placeholder="Select option"
-                              data-dropdown-parent="#kt_menu_62444587ce1ee"
-                              data-allow-clear="true"
-                            >
-                              <option>Seleccionar</option>
-                              <option value="1">Activo</option>
-                             
-                              <option value="2">Inactivo</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <Dropdown.Divider className=" border-gray-200" />
-                      <div className="d-flex justify-content-end dropdown-btns px-7 py-5">
-                        <button
-                          type="reset"
-                          className="btn btn-sm btn-light btn-active-light-primary me-2"
-                          data-kt-menu-dismiss="true"
-                        >
-                          Resetear
-                        </button>
-                        <button
-                          type="submit"
-                          className="btn btn-sm btn-primary"
-                          data-kt-menu-dismiss="true"
-                        >
-                          Aplicar
-                        </button>
-                      </div>
-                    </div>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
-              <div className="inventory-record-box">
-              <p className="text-gray-400 fw-bolder fs-5">500 Productos</p>
-              </div>
-            </div>
-          </div>
-          <div className="inventory-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>SKU</th>
-                  <th>PRODUCTO</th>
-                  <th>PRESENTACIÓN</th>
-                  <th>PRECIO</th>
-                  <th>CATEGORÍA</th>
-                  <th>STOCK</th>
-                  <th>ESTADO</th>
-                  <th>ACCIONES</th>
-                </tr>
-              </thead>
-              <tbody>
-                {currentPosts ? (
-                  currentPosts.map(
-                    (
-                      {
-                        SKU,
-                        PRODUCTO,
-                        PRESENTACIÓN,
-                        PRECIO,
-                        CATEGORÍA,
-                        STOCK,
-                        ESTADO,
-                        ACCIONES,
-                      },
-                      i
-                    ) => (
-                      <tr key={i}>
-                        <td>{SKU}</td>
-                        <td>{PRODUCTO}</td>
-                        <td>{PRESENTACIÓN}</td>
-                        <td>{PRECIO}</td>
-                        <td>{CATEGORÍA}</td>
-                        <td>{STOCK}</td>
-                        <td>
-                          <div className="status-wrapper">
-                            <div
-                              className={
-                                ESTADO === "Activo"
-                                  ? "badge badge-light-primary text-primary"
-                                  : "badge badge-light-danger text-danger"
-                              }>
-                             
-                              <p className="status-p">{ESTADO}</p>
+
+                        <Dropdown.Divider className=" border-gray-200" />
+                        <div>
+                          <div className="px-7 py-5">
+                            <div className="mb-5 ">
+                              <label className="form-label fw-bold">
+                                Estado
+                              </label>
+                              <div>
+                                <select
+                                  className="form-select form-select-solid"
+                                  data-kt-select2="true"
+                                  data-placeholder="Select option"
+                                  data-dropdown-parent="#kt_menu_62444587ce1ee"
+                                  data-allow-clear="true"
+                                >
+                                  <option>Seleccionar</option>
+                                  <option value="1">Completado</option>
+
+                                  <option value="2">Pendiente</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div className="calender">
+                              <Form.Label className="fw-bold">Fecha</Form.Label>
+                              <SingleInputDateRangePicker />
                             </div>
                           </div>
-                        </td>
-                       
-                        <td className="text-end">
-                        <Dropdown
-                            as={ButtonGroup}
-                            show={dropdowns}
-                            onClose={() => closeDropdowns(i)}
-                            onToggle={() => toggleDropdowns(i)}
-                          >
-                            <Dropdown.Toggle 
-                              className={`dropdown-toggle btn btn-sm  btn-flex btn-center  ${
-                                dropdowns[i] === true ? "active" : ""
-                              }`}
-                              id="dropdown-basic"
+                          <Dropdown.Divider className=" border-gray-200" />
+                          <div className="d-flex justify-content-end dropdown-btns px-7 py-5">
+                            <button
+                              type="reset"
+                              className="btn btn-sm btn-light btn-active-light-primary me-2"
+                              data-kt-menu-dismiss="true"
                             >
-                              {ACCIONES}
-                              <i
-                                className='fa-solid fa-chevron-down'
-                              ></i>
-                            </Dropdown.Toggle>
-                            {dropdowns[i] && (
-                             <Dropdown.Menu
-                             className="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
-                             
-                             data-kt-menu="true"
-                             data-popper-placement="bottom-end"
-                           >
-                             <Dropdown.Item className="menu-item px-3">
-                               <a href="#" className="menu-link px-3">
-                               Ver detalles
-                               </a>
-                             </Dropdown.Item>
-                             <Dropdown.Item className="menu-item px-3">
-                               <a href="#" className="menu-link px-3" data-kt-ecommerce-product-filter="delete_row">
-                               Editar
-                               </a>
-                             </Dropdown.Item>
-                             <Dropdown.Item className="menu-item px-3">
-                               <a href="#" className="menu-link px-3 delete" data-kt-ecommerce-product-filter="delete_row">
-                               Eliminar producto
-                               </a>
-                             </Dropdown.Item>
-                           </Dropdown.Menu>
-                            )}
-                          </Dropdown>
-                      </td>
-                      </tr>
-                    )
-                  )
-                ) : (
-                  <tr>
-                    <td colSpan="7">No data available</td>
+                              Resetear
+                            </button>
+                            <button
+                              type="submit"
+                              className="btn btn-sm btn-primary"
+                              data-kt-menu-dismiss="true"
+                            >
+                              Aplicar
+                            </button>
+                          </div>
+                        </div>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </div>
+                </div>
+              </div>
+              <div className="header-right">
+                <Button className="export-btn">
+                  {" "}
+                  <i className="fa-solid fa-file-export"></i> Exportar datos
+                </Button>
+                <Button onClick={handleShowCategory} className="export-btn">
+                Ver Categorías
+                </Button>
+                <Button onClick={handleShow}  className="new-btn">
+                  + Nueva Cita
+                </Button>
+              </div>
+            </div>
+            <div className="card-body pt-0">
+              <table className="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table" >
+                <thead>
+                  <tr className="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                    <th className="">SKU</th>
+                    <th className="text-start ">PRODUCTO</th>
+                    <th className="text-start ">PRESENTACIÓN</th>
+                    <th className="text-start ">PRECIO</th>
+                    <th className="text-start ">CATEGORÍA</th>
+                    <th className="text-start ">STOCK</th>
+                    <th className="text-start ">ESTADO</th>
+                    <th className="text-end ">ACCIONES</th>
                   </tr>
-                )}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {currentPosts ? (
+                    currentPosts.map(
+                      (
+                        { SKU, PRODUCTO, PRESENTACIÓN, PRECIO, CATEGORÍA, STOCK, ESTADO, ACCIONES },
+                        i
+                      ) => (
+                        <tr key={i}>
+                          <td className="text-start pe-0">
+                            <span className=" text-gray-600 ">{SKU}</span>
+                          </td>
+                          <td className="text-start pe-0">
+
+
+                            {PRODUCTO}
+
+                          </td>
+
+                          <td className="text-start pe-0" data-order="16">
+                            {PRESENTACIÓN}
+                          </td>
+                          <td className="text-start pe-0">
+                            {PRECIO}
+                          </td>
+                          <td className="text-start pe-0">
+                            {CATEGORÍA}
+                          </td>
+                          <td className="text-start pe-0">
+                            {STOCK}
+                          </td>
+                          <td className="text-start pe-0" data-order="estado">
+                            <div
+                              className={`${ESTADO === "Inactivo"
+                                ? "badge badge-light-danger text-danger"
+                                : "badge badge-light-primary text-primary "
+                                } `}
+                            >
+                              <p className="mb-0">{ESTADO}</p>
+                            </div>
+                          </td>
+                          <td className="text-end">
+                           
+                            <Dropdown
+                              as={ButtonGroup}
+                              show={dropdowns}
+                              onClose={() => closeDropdowns(i)}
+                              onToggle={() => toggleDropdowns(i)}
+                            >
+                              <Dropdown.Toggle
+                                className={`dropdown-toggle btn btn-sm  btn-flex btn-center  ${
+                                  dropdowns[i] === true ? "active" : ""
+                                }`}
+                                id="dropdown-basic"
+                              >
+                                {ACCIONES}
+                                <i className="fa-solid fa-chevron-down"></i>
+                              </Dropdown.Toggle>
+                              {dropdowns[i] && (
+                                <Dropdown.Menu
+                                  className="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
+                                  data-kt-menu="true"
+                                  data-popper-placement="bottom-end"
+                                >
+                                  <Dropdown.Item className="menu-item px-3">
+                                    <Link
+                                      to="/dashboard/inventario/details"
+                                      className="menu-link px-3"
+                                    >
+                                      Ver detalles
+                                    </Link>
+                                  </Dropdown.Item>
+                                  <Dropdown.Item className="menu-item px-3">
+                                    <a
+                                   onClick={handleShow}
+                                      href="#"
+                                      className="menu-link px-3"
+                                      data-kt-ecommerce-product-filter="delete_row"
+                                    >
+                                      Editar
+                                    </a>
+                                  </Dropdown.Item>
+                                  <Dropdown.Item className="menu-item px-3">
+                                    <a
+                                     onClick={() => setModalShow(true)}
+                                      href="#"
+                                      className="menu-link px-3 delete"
+                                      data-kt-ecommerce-product-filter="delete_row"
+                                    >
+                                      Eliminar producto
+                                    </a>
+                                  </Dropdown.Item>
+                                </Dropdown.Menu>
+                              )}
+                            </Dropdown>
+                          </td>
+                        </tr>
+                      )
+                    )
+                  ) : (
+                    <tr>
+                      <td colSpan="7">No data available</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
+        <Alert show={modalShow}
+                    onHide={handleHide}
+                    msg={"¿Seguro de completar esta operación?"} />
+        <InventoryModal show={show} handleClose={handleClose} />
+        <CategoryModal show={showCategory} handleClose={handleCloseCategory} />
         <CitasPagination current={currentPage}
           total={Math.ceil(inventoryData.length / postsPerPage)}
           onPageChange={setCurrentPage} />
-      </section>
+      </div>
     </>
   );
 };

@@ -29,7 +29,7 @@ function Sidebar() {
                
                   className={`nav-link ${!isActive ? "collapsed" : ""}`}
                   to={path}>
-                  <i className={icon}></i>
+                   <img src={icon} alt={icon} />
    
                   <span>{title}</span>
                 </Link>

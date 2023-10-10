@@ -5,10 +5,14 @@ import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import "./calendario.scss";
-// import { Button } from "react-bootstrap";
-// import Event from "./add event/Event";
 import esLocale from "@fullcalendar/core/locales/es";
+import { Button, Form } from "react-bootstrap";
+import CitasModal from "../citas/modal/CitasModal";
 function Calendario() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const lists = [
     {
       title: 'Event 1',
@@ -28,10 +32,7 @@ function Calendario() {
   ];
  
 
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  
 
   return (
     <div className="calendario">
@@ -42,7 +43,24 @@ function Calendario() {
         </div>
         {/* <Button onClick={handleShow}>Añadir evento</Button> */}
       </div>
-      <div className="maincontainer">
+      <div className="calendario-main">
+      <div className="maincontainer-top">
+        <div className="calendario-schedule-btn-group">
+         <div>
+         <Form.Group  controlId="formBasicPassword">
+                                   
+                                    <Form.Select aria-label="Default select example">
+                                        <option>Seleccionar el doctor</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </Form.Select>
+                                </Form.Group>
+         </div>
+          <Button onClick={handleShow}>+ Agendar Cita</Button>
+        </div>
+        </div>
+      <div className="maincontainer-bottom">
         <FullCalendar
           plugins={[
             dayGridPlugin,
@@ -80,8 +98,9 @@ function Calendario() {
 
         <div></div>
       </div>
+      </div>
 
-     
+     <CitasModal show={show} handleClose={handleClose} />
     </div>
   );
 }

@@ -4,29 +4,29 @@
   height: 100%;
   padding: 25px 45px;
   font-family: "Inter";
-  .proximas{
+  .proximas {
     margin-top: 20px;
     border-radius: 8px;
     background-color: #fff;
-    .proximas-top-heading{
+    .proximas-top-heading {
       width: 100%;
       text-align: start;
       padding: 20px;
-      p{
+      p {
         margin-bottom: 0;
-        font: normal normal  15px/19px Inter;
+        font: normal normal 15px/19px Inter;
         font-weight: 500;
-letter-spacing: -0.15px;
-color: #000000;
+        letter-spacing: -0.15px;
+        color: #000000;
       }
     }
     .owners-table {
       table {
         width: 100%;
         tr {
-         .th-space{
-          width:108px;
-         }
+          .th-space {
+            width: 108px;
+          }
           padding: 10px 0;
           th {
             text-align: start;
@@ -34,40 +34,40 @@ color: #000000;
             border-bottom: 1px solid #e2e6e9;
             color: #8a98a5;
             padding: 10px 20px;
-            &:last-child{
+            &:last-child {
               text-align: end !important;
             }
           }
           td {
-            font: normal normal  13px/21px Inter;
+            font: normal normal 13px/21px Inter;
             font-weight: normal;
-           padding: 1.25rem 20px !important;
-           text-align: start;
-        
-           .btn {
-            width: 108px !important;
-          }
-           &:nth-child(1){
-            width: 7%;
-          }
-          &:nth-child(2){
-            width: 29%;
-          }
-          &:nth-child(3){
-            width: 27%;
-          }
-          &:nth-child(4) {
-            width: 15%;
-          }
-          &:nth-child(5){
-            width: 11%;
-          }
-          &:nth-child(6){
-            width: 12%;
-          }
-           &:last-child{
-            text-align: end !important;
-           }
+            padding: 1.25rem 20px !important;
+            text-align: start;
+
+            .btn {
+              width: 108px !important;
+            }
+            &:nth-child(1) {
+              width: 7%;
+            }
+            &:nth-child(2) {
+              width: 29%;
+            }
+            &:nth-child(3) {
+              width: 27%;
+            }
+            &:nth-child(4) {
+              width: 15%;
+            }
+            &:nth-child(5) {
+              width: 11%;
+            }
+            &:nth-child(6) {
+              width: 12%;
+            }
+            &:last-child {
+              text-align: end !important;
+            }
             .star-icon-wrapper {
               font-weight: bold;
               .bi {
@@ -102,7 +102,7 @@ color: #000000;
                 }
               }
             }
-  
+
             padding: 10px 0;
             button {
               padding: 10px !important;
@@ -125,10 +125,9 @@ color: #000000;
           }
           td:first-child {
             font: normal normal 600 12px/15px Inter;
-  
+
             color: #8a98a5;
           }
-         
         }
         tr:not(:last-child) {
           border-bottom: 1px solid #e2e6e9; /* Adjust the border style as needed */
@@ -136,7 +135,7 @@ color: #000000;
       }
     }
   }
-  
+
   .bg-body {
     margin-bottom: 0 !important;
   }
@@ -144,7 +143,6 @@ color: #000000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  
   }
   .active-detail {
     border-left: 4px solid #336cfb !important;
@@ -177,15 +175,17 @@ color: #000000;
         font: normal normal 13px/16px Inter;
         font-weight: 600 !important;
         padding: 10px 12px !important;
-&:hover,&:focus,&:active{
-  background: #f1f6f4 0% 0% no-repeat padding-box !important;
-  border-radius: 8px !important;
-  border: 0;
-  color: #000 !important;
-  font: normal normal 13px/16px Inter;
-  font-weight: 600 !important;
-  padding: 10px 12px !important;
-}
+        &:hover,
+        &:focus,
+        &:active {
+          background: #f1f6f4 0% 0% no-repeat padding-box !important;
+          border-radius: 8px !important;
+          border: 0;
+          color: #000 !important;
+          font: normal normal 13px/16px Inter;
+          font-weight: 600 !important;
+          padding: 10px 12px !important;
+        }
 
         .fa-regular {
           margin-right: 6px;
@@ -205,7 +205,7 @@ color: #000000;
       padding: 0 8px;
       border-left: 4px solid #e2e6e9;
       margin-top: 15px;
-      
+
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -232,7 +232,7 @@ color: #000000;
           font: 13px/26px Inter;
           font-weight: bold !important;
           background: #f1f6f4 0% 0% no-repeat padding-box !important;
-          &:hover{
+          &:hover {
             border: 0 !important;
             color: #000 !important;
             font: 13px/26px Inter;
@@ -257,21 +257,80 @@ color: #000000;
     }
   }
   .calendar-box {
-    .calendar-btn-top{
+    .export-btn {
+      margin-right: 10px;
+      background: #fff !important;
+      color: #000 !important;
+:hover{
+  .fa-solid {
+    color: #000 !important;
+  }
+}
+
+      .fa-solid {
+        color: #000 !important;
+      }
+    }
+    .dropdown {
+      .active {
+        background: #f1faff !important;
+        color: #3e97ff !important;
+        .fa-solid {
+          color: #3e97ff !important;
+        }
+      }
+      .dropdown-toggle {
+        font-weight: normal;
+        background: #fff 0% 0% no-repeat padding-box;
+        font: normal normal 13px/26px Inter;
+        letter-spacing: 0px;
+        color: #000000;
+        .fa-solid {
+          color: #000;
+          margin-left: 10px;
+          font-size: 12px;
+        }
+        &:hover {
+          background: #f1faff !important;
+          color: #3e97ff;
+          .fa-solid {
+            color: #3e97ff;
+          }
+        }
+      }
+      .dropdown-menu {
+        box-shadow: 0px 3px 12px rgb(0 0 0 / 16%);
+        border: 0;
+        border-radius: 8px;
+        width: 200px;
+        position: absolute !important;
+        inset: 0px auto auto 0px !important;
+        transform: translate(25px, 46px) !important;
+        a:active{
+          background: transparent !important;
+        }
+        .delete {
+          color: #fc5f6b;
+        }
+        .dropdown-item {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+      }
+    }
+    .calendar-btn-top {
       padding: 15px;
       border: 0;
-      background: #336CFB !important;
+      background: #336cfb !important;
       color: #fff !important;
       &:hover {
         padding: 15px;
         border: 0;
-        background: #336CFB !important;
-      color: #fff !important;
-  
+        background: #336cfb !important;
+        color: #fff !important;
       }
       .fa-regular {
         margin-right: 8px;
-      
       }
     }
     .calendar-btn {
@@ -280,33 +339,33 @@ color: #000000;
       background: #f6f8ff !important;
       color: #000 !important;
 
-      &:hover, &:active, &:focus{
+      &:hover,
+      &:active,
+      &:focus {
         padding: 15px;
         border: 0;
-        background: #f6f8ff !important; 
+        background: #f6f8ff !important;
         color: #000 !important;
-  
       }
       .fa-regular {
         margin-right: 8px;
         color: #000 !important;
-
       }
     }
   }
   .card {
     text-decoration: none;
     text-align: start;
-   
+
     border-radius: 8px;
     border: 1px solid #f1f1f2;
     font-family: Inter;
-   
+
     .header-section {
-     display: flex;
-     align-items: start !important;
-     justify-content: space-between;
-     margin-bottom: 10px;
+      display: flex;
+      align-items: start !important;
+      justify-content: space-between;
+      margin-bottom: 10px;
       .calendar-p {
         margin-bottom: 0 !important;
         font: normal normal 15px/19px Inter !important;
@@ -316,57 +375,57 @@ color: #000000;
       }
     }
     .card-body {
-      padding:0 !important;
-.card-top-box{
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid #DFDFE3;
-  img{
-    margin-right: 15px;
-  }
-  .letf-main-text{
-    margin-bottom: 0;
-    font: normal normal  15px/19px Inter;
-    font-weight: 500;
-letter-spacing: -0.15px;
-color: #8A98A5;
-  }
-  .left-sub-text{
-    margin-top: 5px;
-    margin-bottom: 0;
-    font: normal normal 600 18px/21px Inter;
-letter-spacing: 0px;
-color: #000000;
-  }
-}
-.card-bottom-box{
-  padding: 20px;
-  hr{
-    background-color: #DFDFE3 !important;
-    border: 0;
-    opacity: 1 !important;
-  }
-  .card-bottom-text-wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .bottom-left-text{
-      margin-bottom: 0;
-      font: normal normal  13px/16px Inter;
-      font-weight: normal;
-letter-spacing: 0px;
-color: #242424;
-    }
-    .bottom-right-text{
-      margin-bottom: 0;
-      font: normal normal  13px/16px Inter;
-      font-weight: normal;
-letter-spacing: 0px;
-color: #242424;
-    }
-  }
-}
+      padding: 0 !important;
+      .card-top-box {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid #dfdfe3;
+        img {
+          margin-right: 15px;
+        }
+        .letf-main-text {
+          margin-bottom: 0;
+          font: normal normal 15px/19px Inter;
+          font-weight: 500;
+          letter-spacing: -0.15px;
+          color: #8a98a5;
+        }
+        .left-sub-text {
+          margin-top: 5px;
+          margin-bottom: 0;
+          font: normal normal 600 18px/21px Inter;
+          letter-spacing: 0px;
+          color: #000000;
+        }
+      }
+      .card-bottom-box {
+        padding: 20px;
+        hr {
+          background-color: #dfdfe3 !important;
+          border: 0;
+          opacity: 1 !important;
+        }
+        .card-bottom-text-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .bottom-left-text {
+            margin-bottom: 0;
+            font: normal normal 13px/16px Inter;
+            font-weight: normal;
+            letter-spacing: 0px;
+            color: #242424;
+          }
+          .bottom-right-text {
+            margin-bottom: 0;
+            font: normal normal 13px/16px Inter;
+            font-weight: normal;
+            letter-spacing: 0px;
+            color: #242424;
+          }
+        }
+      }
       .fa-icons {
         font-size: 2rem !important;
         color: #336cfb !important;
@@ -383,7 +442,6 @@ color: #242424;
     }
   }
   .card-wrapper {
-  
     .card-main-title {
       text-align: start;
       font: normal normal 600 18px/21px Inter;
@@ -396,16 +454,16 @@ color: #242424;
     .calendar-card-wrapper2 {
       width: 100%;
       height: 100%;
-      box-shadow:  0px 4px 12px 0px rgba(0, 0, 0, 0.03) !important;
+      box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.03) !important;
       border-radius: 8px;
       border: 1px solid #f1f1f2 !important;
       background: #fff;
-     }
+    }
 
     .calendar-card-wrapper {
       width: 100%;
       height: 100%;
-      box-shadow:  0px 4px 12px 0px rgba(0, 0, 0, 0.03) !important;
+      box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.03) !important;
       border-radius: 8px;
       border: 1px solid #f1f1f2 !important;
       background: #fff;
@@ -419,11 +477,11 @@ color: #242424;
     .calendar-card-wrapper-medicamentos {
       width: 100%;
       height: 100%;
-      box-shadow:  0px 4px 12px 0px rgba(0, 0, 0, 0.03) !important;
+      box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.03) !important;
       border-radius: 8px;
       border: 1px solid #f1f1f2;
       background: #fff;
-     
+
       table {
         width: 100%;
         tr {
@@ -435,24 +493,24 @@ color: #242424;
             color: #8a98a5;
             padding: 10px 20px;
             text-align: start;
-            &:last-child{
+            &:last-child {
               text-align: end;
             }
           }
           td {
-           padding:10px 20px ;
-           padding: 10px 20px;
-           text-align: start;
-a{
-  padding: 15px !important;
-  .fa-solid{
-    color: #000;
-  }
-}
+            padding: 10px 20px;
+            padding: 10px 20px;
+            text-align: start;
+            a {
+              padding: 15px !important;
+              .fa-solid {
+                color: #000;
+              }
+            }
 
-           &:last-child{
-             text-align: end;
-           }
+            &:last-child {
+              text-align: end;
+            }
             .table-btn {
               border-radius: 0.325rem;
               color: #000;
@@ -474,13 +532,13 @@ a{
               }
             }
           }
-         
+
           td:nth-child(2),
           td:nth-child(3) {
             font: normal normal normal 13px/21px Inter;
-           
-            font-weight:normal;
-            font-size: 1.075rem!important;
+
+            font-weight: normal;
+            font-size: 1.075rem !important;
           }
         }
       }
@@ -490,7 +548,7 @@ a{
         font: 15px/19px Inter;
         font-weight: bold;
         padding: 20px;
-        p{
+        p {
           margin-bottom: 0;
         }
       }

@@ -1,17 +1,29 @@
 import React, { useState } from 'react'
 import "./citasDetail.scss"
-import { Col, Collapse, Image, Row } from 'react-bootstrap'
+import { ButtonGroup, Col, Collapse, Dropdown, Image, Row } from 'react-bootstrap'
 
 import MainTab from './tabs/main/MainTab'
 import { Link } from 'react-router-dom'
+import CitasModal from '../modal/CitasModal'
+import Alert from '../../../../components/alert/Alert'
 function CitasDetail() {
   const [show, setShow] = useState(true)
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => setOpen(false);
+  const handleShow = () => setOpen(true);
+  const [modalShow, setModalShow] = useState(false);
+
+  const handleHide = () => {
+      setModalShow(false);
+  }
   return (
     <div className='citas-detail-container'>
 <div className="main-title-box">
         <p className="citas-detail-main-title">Citas agendadas</p>
         <p className="citas-detail-sub-title">Citas agendadas</p>
       </div>
+
       <Row  className="flex-column flex-lg-row">
           <Col lg={2} xl={3} className="w-lg-250px w-xl-350px">
             <div className="head container-sm">
@@ -80,9 +92,49 @@ function CitasDetail() {
             </div>
           </Col>
           <Col className="ms-lg-15">
+            <div className='drop-down'>
+          <Dropdown
+                            as={ButtonGroup}
+                           
+                          >
+                            <Dropdown.Toggle 
+                              className='dropdown-toggle btn btn-sm  btn-flex btn-center' 
+                              id="dropdown-basic"
+                            >
+                              Accion
+                              <i
+                                className='fa-solid fa-chevron-down'
+                              ></i>
+                            </Dropdown.Toggle>
+                           
+                             <Dropdown.Menu
+                             className="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
+                             
+                             data-kt-menu="true"
+                             data-popper-placement="bottom-end"
+                           >
+                            
+                             <Dropdown.Item className="menu-item px-3">
+                               <a onClick={handleShow}  href="#" className="menu-link px-3" data-kt-ecommerce-product-filter="delete_row">
+                               Editar
+                               </a>
+                             </Dropdown.Item>
+                             <Dropdown.Item className="menu-item px-3">
+                               <a onClick={() => setModalShow(true)} href="#" className="menu-link px-3 delete" data-kt-ecommerce-product-filter="delete_row">
+                               Eliminar producto
+                               </a>
+                             </Dropdown.Item>
+                           </Dropdown.Menu>
+                           
+                          </Dropdown>
+                          </div>
           <MainTab/>
           </Col>
         </Row>
+        <Alert show={modalShow}
+                    onHide={handleHide}
+                    msg={"¿Seguro de completar esta operación?"} />
+        <CitasModal show={open}  handleClose={handleClose} />
     </div>
   )
 }

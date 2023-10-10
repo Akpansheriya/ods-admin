@@ -12,6 +12,7 @@
   .dropdown {
     .filter-btn {
       background: #f6f8ff;
+      padding: 10px !important;
       color: #000;
       display: flex;
       justify-content: center;
@@ -21,14 +22,16 @@
       .bi {
         font: normal normal normal 18px Inter;
         color: #acacac;
+        margin-right: 10px;
       }
       .fa-solid {
         color: #acacac;
+        margin-left: 16px;
       }
       p {
         font: normal normal normal 13px/22px Inter;
         margin-bottom: 0;
-        margin-inline: 16px;
+      
       }
     }
     .dropdown-toggle {
@@ -107,7 +110,7 @@
     border-radius: 8px;
     .card {
       .card-header {
-        padding: 20px;
+        padding: 20px 25px;
         .header-left{
           display: flex;
           align-items: center;
@@ -116,6 +119,10 @@
         .header-right{
           display: flex;
           align-items: center;
+          .btn{
+            font: normal normal 14px/26px Inter;
+            font-weight: 500;
+          }
           .export-btn{
             margin-right: 10px;
             background: #F6F8FF !important;
@@ -183,6 +190,9 @@
                     position: absolute !important;
                     inset: 0px auto auto 0px !important;
                     transform: translate(-30px, 40px) !important;
+                    a:active{
+background: transparent !important;
+                    }
                     .delete {
                       color: #fc5f6b;
                     }
@@ -282,7 +292,7 @@
             color: #000;
             font: normal normal normal 13px/22px Inter;
             margin-bottom: 0;
-            margin-inline: 16px;
+           
           }
         }
       }

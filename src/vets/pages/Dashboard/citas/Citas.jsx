@@ -6,6 +6,9 @@ import CitasPagination from "../../../components/pagination/citas-pagination/Cit
 import { Link } from "react-router-dom";
 
 import SingleInputDateRangePicker from "./date-picker/DatePicker";
+import CitasModal from "./modal/CitasModal";
+import Alert from "../../../components/alert/Alert";
+
 
 
 
@@ -50,6 +53,11 @@ function Citas() {
     adjustedIndexOfFirstPost,
     indexOfLastPost
   );
+  const [modalShow, setModalShow] = useState(false);
+
+    const handleHide = () => {
+        setModalShow(false);
+    }
   return (
     <div className="citas">
       <div className="main-title-box">
@@ -128,7 +136,7 @@ function Citas() {
                     <div className="px-7 py-5">
                       <div className="fs-5 text-dark fw-bolder">Filtros</div>
                     </div>
-                    {/* <div className="separator border-gray-200"></div> */}
+                 
                     <Dropdown.Divider className=" border-gray-200" />
                     <div>
                       <div className="px-7 py-5">
@@ -287,17 +295,17 @@ function Citas() {
                              data-popper-placement="bottom-end"
                            >
                              <Dropdown.Item className="menu-item px-3">
-                               <a href="#" className="menu-link px-3">
+                               <Link to={`/dashboard/citas-view?status=${ESTADO}`} className="menu-link px-3">
                                Ver detalles
-                               </a>
+                               </Link>
                              </Dropdown.Item>
                              <Dropdown.Item className="menu-item px-3">
-                               <a href="#" className="menu-link px-3" data-kt-ecommerce-product-filter="delete_row">
+                               <a onClick={handleShow} href="#" className="menu-link px-3" data-kt-ecommerce-product-filter="delete_row">
                                Editar
                                </a>
                              </Dropdown.Item>
                              <Dropdown.Item className="menu-item px-3">
-                               <a href="#" className="menu-link px-3 delete" data-kt-ecommerce-product-filter="delete_row">
+                               <a onClick={() => setModalShow(true)} href="#" className="menu-link px-3 delete" data-kt-ecommerce-product-filter="delete_row">
                                Eliminar producto
                                </a>
                              </Dropdown.Item>
@@ -318,6 +326,9 @@ function Citas() {
           </div>
         </div>
         <CitasModal show={show} handleClose={handleClose} />
+        <Alert show={modalShow}
+                    onHide={handleHide}
+                    msg={"¿Seguro de completar esta operación?"} />
       </div>
       <CitasPagination
         current={currentPage}

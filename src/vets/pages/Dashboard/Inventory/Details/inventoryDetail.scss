@@ -2,22 +2,25 @@
   font-family: "Inter";
   padding: 25px;
 
-  
+  .actualizer-btn {
+    position: absolute;
+right: 140px; 
+
+  }
   .heading {
     padding: 1.5rem 0;
     text-align: start;
-   .p-head{
-    margin-bottom: 5px;
-  font: normal normal bold 26px/31px Inter;
-   }
-      p {
-        text-align: left;
-        font-size: 15px;
-        font-weight: 500;
-      }
+    .p-head {
+      margin-bottom: 5px;
+      font: normal normal bold 26px/31px Inter;
     }
-    
-  
+    p {
+      text-align: left;
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
+
   .head {
     background-color: #fff;
     padding: 30px 32px;
@@ -37,15 +40,15 @@
         font-size: 25px;
       }
     }
-    
+
     .pet-name {
       font: normal normal 15px/22px Inter;
       font-weight: 600;
       margin-bottom: 10px;
     }
     .status {
-      background-color: #D9EFFF;
-      color: #0092FF;
+      background-color: #d9efff;
+      color: #0092ff;
       border-radius: 50px;
       padding: 10px;
       width: 100px;

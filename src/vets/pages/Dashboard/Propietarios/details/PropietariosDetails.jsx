@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import "./PropietariosDetails.scss";
-import { Col, Collapse, Row } from "react-bootstrap";
+import { ButtonGroup, Col, Collapse, Dropdown, Row } from "react-bootstrap";
 import MainTab from "./Tabs/MainTab";
 import { Link } from "react-router-dom";
+import PropietariousModal from "../modal/PropietariousModal";
+import Alert from "../../../../components/alert/Alert";
 
 const PropietariosDetails = () => {
   const [show, setShow] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
+  const handleHide = () => {
+    setModalShow(false);
+}
+  const handleClose = () => setOpen(false);
+  const handleShow = () => setOpen(true);
   return (
     <>
       <section className="propietariosdetails-section">
@@ -86,11 +95,52 @@ const PropietariosDetails = () => {
             </div>
           </Col>
           <Col className="ms-lg-15">
+          <div className='drop-down'>
+          <Dropdown
+                            as={ButtonGroup}
+                           
+                          >
+                            <Dropdown.Toggle 
+                              className='dropdown-toggle btn btn-sm  btn-flex btn-center' 
+                              id="dropdown-basic"
+                            >
+                              Accion
+                              <i
+                                className='fa-solid fa-chevron-down'
+                              ></i>
+                            </Dropdown.Toggle>
+                           
+                             <Dropdown.Menu
+                             className="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
+                             
+                             data-kt-menu="true"
+                             data-popper-placement="bottom-end"
+                           >
+                            
+                            
+                             <Dropdown.Item className="menu-item px-3">
+                               <a onClick={handleShow}  href="#" className="menu-link px-3" data-kt-ecommerce-product-filter="delete_row">
+                               Editar
+                               </a>
+                             </Dropdown.Item>
+                             <Dropdown.Item className="menu-item px-3">
+                               <a onClick={() => setModalShow(true)} href="#" className="menu-link px-3 delete" data-kt-ecommerce-product-filter="delete_row">
+                               Eliminar producto
+                               </a>
+                             </Dropdown.Item>
+                           </Dropdown.Menu>
+                           
+                          </Dropdown>
+                          </div>
             <div className="second ">
               <MainTab />
             </div>
           </Col>
         </Row>
+        <Alert show={modalShow}
+                    onHide={handleHide}
+                    msg={"¿Seguro de completar esta operación?"} />
+        <PropietariousModal show={open} handleClose={handleClose} />
       </section>
     </>
   );

@@ -4,7 +4,7 @@ import Diagnostic from '../diagnostic/Diagnostic'
 import Historical from '../historial/Historical'
 
 import "./mainTab.scss"
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import DiagnosticForm from '../diagnostic-form/DiagnosticForm'
 
 function MainTab() {
@@ -31,8 +31,11 @@ function MainTab() {
         
       <Historical />
       </Tab>
+      
      
+   
     </Tabs>
+    
     </div>
   )
 }

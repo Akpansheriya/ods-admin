@@ -1,29 +1,21 @@
 import React from 'react'
 import { Button, Col, Form, Modal, Row } from 'react-bootstrap'
+import { success } from '../../../../components/popup/Success'
 import "./citasModal.scss"
 function CitasModal({show,handleClose}) {
   return (
-    <div>
-         <Modal size='lg' show={show} onHide={handleClose}>
+    <Modal size='lg' show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Información de cita</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <Form>
                         <Row>
                             <Col>
                                 <Form.Group className="mb-3" controlId="formBasicSelect">
-                                    <Form.Label>Producto</Form.Label>
-                                    <Form.Control aria-label="Default" placeholder='Producto' />
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Form.Group className="mb-3" controlId="formBasicPassword">
-                                    <Form.Label>Categoría</Form.Label>
+                                    <Form.Label>Propietario</Form.Label>
                                     <Form.Select aria-label="Default select example">
-                                        <option>Categoría</option>
+                                        <option>Propietario</option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>
@@ -32,9 +24,9 @@ function CitasModal({show,handleClose}) {
                             </Col>
                             <Col>
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                                    <Form.Label>Marca</Form.Label>
+                                    <Form.Label>Mascota</Form.Label>
                                     <Form.Select aria-label="Default select example">
-                                        <option>Marca</option>
+                                        <option>Mascota</option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>
@@ -44,79 +36,41 @@ function CitasModal({show,handleClose}) {
                         </Row>
                         <Row>
                             <Col>
-                                <Form.Group className="mb-3" controlId="formBasicDate">
-                                    <Form.Label>Composición</Form.Label>
-                                    <Form.Control type="text" placeholder="Composición" />
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Veterinario</Form.Label>
+                                    <Form.Select aria-label="Default select example">
+                                        <option>Veterinario</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </Form.Select>
                                 </Form.Group>
                             </Col>
                             <Col>
                                 <Row>
                                     <Col>
-                                        <Form.Group className="mb-3" controlId="formBasicSelect">
-                                            <Form.Label>Stock</Form.Label>
-                                            <Form.Control aria-label="Default " placeholder='Stock' />
+                                        <Form.Group className="mb-3" controlId="formBasicDate">
+                                            <Form.Label>Fecha</Form.Label>
+                                            <Form.Control type="date" placeholder="DD/MM/AAAA" />
                                         </Form.Group>
                                     </Col>
                                     <Col>
-                                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                                            <Form.Label>Estado</Form.Label>
-                                            <Form.Select aria-label="Default select example">
-                                                <option>Estado</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </Form.Select>
+                                        <Form.Group className="mb-3" controlId="formBasicTime">
+                                            <Form.Label>Horario</Form.Label>
+                                            <Form.Control type="time" placeholder="HH:MM" />
                                         </Form.Group>
                                     </Col>
                                 </Row>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Form.Group className="mb-3" controlId="formBasicSelect">
-                                    <Form.Label>SKU</Form.Label>
-                                    <Form.Control aria-label="Default " placeholder='SKU' />
-                                </Form.Group>
-                            </Col>
-                            <Col>
-                                <Form.Group className="mb-3" controlId="formBasicSelect">
-                                    <Form.Label>Laboratorio</Form.Label>
-                                    <Form.Control aria-label="Default" placeholder='Laboratorio' />
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Form.Group className="mb-3" controlId="formBasicPassword">
-                                    <Form.Label>Provincia</Form.Label>
-                                    <Form.Select aria-label="Default select example">
-                                        <option>Provincia</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </Form.Select>
-                                </Form.Group>
-                            </Col>
-                            <Col>
-                                <Form.Group className="mb-3" controlId="formBasicPassword">
-                                    <Form.Label>Distrito</Form.Label>
-                                    <Form.Select aria-label="Default select example">
-                                        <option>Distrito</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </Form.Select>
-                                </Form.Group>
                             </Col>
 
                         </Row>
                         <Row>
                             <Col>
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                                    <Form.Label>Descripción</Form.Label>
+                                    <Form.Label>Observaciones de cita</Form.Label>
                                     <Form.Control
                                         as="textarea"
-                                        placeholder="Descripción"
+                                        placeholder="Observaciones de cita"
                                         style={{ height: '100px' }}
                                     />
                                 </Form.Group>
@@ -126,14 +80,13 @@ function CitasModal({show,handleClose}) {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+          Cancelar
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+          <Button variant="primary" onClick={() => {handleClose(); success();}}>
+          Guardar Cambios
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
   )
 }
 

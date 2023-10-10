@@ -72,7 +72,7 @@ function PtientesChart() {
           <Button className="mensual-btn">Mensual</Button>
         </div>
       </div>
-      <div className="d-flex flex-wrap chart">
+      <div className="d-flex flex-wrap chart align-items-end">
         <div className="position-relative d-flex flex-center h-175px w-200px me-15 mb-7">
           <ReactApexChart
             height={220}
@@ -94,7 +94,7 @@ function PtientesChart() {
           </div>
           {graphData.map((ele, ind) => (
             <>
-              <div className="d-flex fs-6 fw-semibold align-items-center mb-3">
+              <div className="d-flex fs-6 fw-semibold align-items-center mb-4">
                 <div className={`color-point ${ele.color}`}></div>{" "}
                 <p className="mb-0 text-gray-400">{ele.date}</p>
 
