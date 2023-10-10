@@ -19,7 +19,7 @@ import Inventory from '../Inventory/Inventory'
 import InventoryDetails from '../Inventory/Details/InventoryDetails'
 import Sidebar from '../../../components/sidebar/Sidebar'
 import Navbars from '../../../components/navbar/Navbars'
-import Desktop from '../desktop/Desktop'
+
 
 
 function Main() {
@@ -47,7 +47,7 @@ function Main() {
           <Route path="/propietarios/details" element={<PropietariosDetails />} />
           <Route path="/inventario" element={<Inventory />} />
           <Route path="/inventario/details" element={<InventoryDetails />} />
-          <Route path="/desktop" element={<Desktop />} />
+        
         
         </Routes>
         <Footer/>
